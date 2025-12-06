@@ -1,7 +1,7 @@
-Anther Heart
+Ather Heart
 Heart Disease Prediction System (Mini Project – 2025)
 
-Anther Heart is a machine-learning based web application that predicts the risk of heart disease using patient health parameters.
+Ather Heart is a machine-learning based web application that predicts the risk of heart disease using patient health parameters.
 The system includes OCR-based report extraction, manual form prediction, SHAP explainability, and dashboards for patients, doctors, and hospitals.
 
 This project uses a Flask backend for ML prediction and a React frontend for the user interface.
@@ -47,7 +47,7 @@ Feature importance used for explanations
    CORS
    
 ##Project Structure:
-anther-heart/
+ather-heart/
 │
 ├── backend/
 │   ├── app.py
