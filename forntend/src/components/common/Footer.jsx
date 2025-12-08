@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
 
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Anther Heart</h2>
+          <h2 className="text-2xl font-semibold mb-4">Ather Heart</h2>
           <p className="text-gray-400">Your companion for early heart-risk understanding.</p>
         </div>
 
