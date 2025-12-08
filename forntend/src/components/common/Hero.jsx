@@ -16,7 +16,7 @@ export default function Hero({ onLogin }) {
           </h1>
 
           <p className="text-lg text-gray-600 mb-8 max-w-lg">
-            Anther Heart uses advanced machine learning to analyze heart-related data,
+            Ather Heart uses advanced machine learning to analyze heart-related data,
             explain results softly, and support patients, doctors, and hospitals.
           </p>
 
