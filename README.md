@@ -1,59 +1,66 @@
-# Ather Heart
-### Heart Disease Prediction System (Mini Project – 2025)
+#  Ather Heart – Heart Disease Prediction System
 
-Ather Heart is a machine-learning based web application that predicts the risk of heart disease using patient health parameters.
+Ather Heart is a **machine learning powered web application** that predicts the risk of heart disease using patient health parameters.
 
-The system includes **OCR-based report extraction, manual form prediction, SHAP explainability, and dashboards for patients, doctors, and hospitals.**
+The system includes **OCR-based report extraction, manual form prediction, explainable AI insights (SHAP), and role-based dashboards** for patients, doctors, and hospitals.
 
-The project uses a **Flask backend** for ML prediction and a **React frontend** for the user interface.
+The goal of this project is to make **early heart disease risk screening accessible, explainable, and interactive** using AI and modern web technologies.
 
 ---
 
-## Project Features
+#  Features
 
-### Patient Side
-- Upload medical report (OCR extracts values automatically)
-- Missing values are shown in a fallback form to fill manually
-- Manual health parameter entry
-- ML prediction results
-
-### ML Model Output
-- Risk Level (**Low / Medium / High**)
-- Probability percentage
-- Friendly explanation sentences based on **SHAP**
-- Recommendation cards based on the risk level
+##  Patient Interface
+- Upload medical reports (OCR extracts values automatically)
+- Manual health parameter input form
+- Heart disease **risk classification (Low / Medium / High)**
+- **Probability score** of prediction
+- SHAP-based friendly explanations
+- Health recommendation cards based on risk
 - Floating chatbot assistant (**Chopper**)
 
-### Doctor Side
-- Raw **SHAP values** for all features
-- Feature impact list for each prediction
-- Explainable prediction insights
+---
 
-### Hospital Side
-- Basic placeholder dashboard
-- Designed for future hospital analytics
+##  Doctor Interface
+- View prediction details
+- Raw **SHAP feature contributions**
+- Feature importance for each patient prediction
 
 ---
 
-## Machine Learning
-
-- **Model:** XGBoost
-- **Normalization:** StandardScaler
-- **Imbalance Handling:** SMOTE
-- **Feature Engineering:** BMI auto-calculated
-- **Explainability:** SHAP feature importance
+##  Hospital Interface
+- Basic administrative dashboard
+- Placeholder for future hospital integration
 
 ---
 
-## Tech Stack
+#  Machine Learning Pipeline
 
-### Frontend
+### Data Processing
+- Combined dataset created by merging multiple heart disease datasets
+- Missing value removal
+- BMI feature generation
+- StandardScaler normalization
+- SMOTE for class imbalance handling
+
+### Model
+- **XGBoost Classifier**
+- Optimized hyperparameters
+
+### Explainability
+- **SHAP (SHapley Additive exPlanations)** used to explain predictions.
+
+---
+
+#  Tech Stack
+
+## Frontend
 - React (Vite)
 - Tailwind CSS
 - JavaScript
 - Axios
 
-### Backend
+## Backend
 - Flask
 - Python
 - SHAP
@@ -61,71 +68,73 @@ The project uses a **Flask backend** for ML prediction and a **React frontend** 
 - Joblib
 - Flask-CORS
 
+## Machine Learning
+- XGBoost
+- Scikit-learn
+- Pandas
+- NumPy
+- Imbalanced-learn (SMOTE)
+
 ---
 
-## Project Structure
+#  Project Structure
 
 ```
-ather-heart/
+Ather-Heart
 │
-├── backend/
+├── backend
 │   ├── app.py
 │   ├── predict.py
 │   ├── ocr_utils.py
 │   ├── preprocess_utils.py
-│   └── model/
-│        ├── heart_model.pkl
-│        ├── scaler.pkl
-│        └── feature_columns.pkl
+│   ├── requirements.txt
 │
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── assets/
-│   │   └── App.jsx
-│   └── index.html
+│   └── model
+│       ├── heart_model.pkl
+│       ├── scaler.pkl
+│       ├── feature_columns.pkl
+│
+│       └── training
+│           ├── combined.csv
+│           └── train_model.py
+│
+├── frontend
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   └── assets
+│   └── package.json
 │
 └── README.md
 ```
 
 ---
 
-## How to Run the Project
+#  Installation & Setup
 
-You need **two terminals**: one for the backend and one for the frontend.
+## 1️ Clone the Repository
 
-### 1. Backend Setup (Flask)
-
-Go to backend folder:
-
+```bash
+git clone https://github.com/GaliAkshatha/Ather-Heart.git
+cd Ather-Heart
 ```
+
+---
+
+## 2️ Backend Setup
+
+```bash
 cd backend
-```
 
-Create virtual environment:
-
-```
 python -m venv venv
-```
 
-Activate:
+# Activate environment
 
-Windows
-
-```
+# Windows
 venv\Scripts\activate
-```
 
-Install required packages:
-
-```
 pip install -r requirements.txt
-```
 
-Start backend:
-
-```
 python app.py
 ```
 
@@ -137,13 +146,15 @@ http://127.0.0.1:5000
 
 ---
 
-### 2. Frontend Setup (React)
+## 3️ Frontend Setup
 
 Open a new terminal:
 
-```
+```bash
 cd frontend
+
 npm install
+
 npm run dev
 ```
 
@@ -155,27 +166,31 @@ http://localhost:5173
 
 ---
 
-## Sample Input for Testing
+#  Sample Input for Testing
 
-Use these values in the manual form:
+Use the following values in the manual prediction form:
 
-Age: 54  
-Sex: 1  
-Height: 165  
-Weight: 78  
-RestingBP: 150  
-DiastolicBP: 95  
-Cholesterol: 240  
-Glucose: 130  
-Smoking: 0  
-AlcoholIntake: 1  
-PhysicalActivity: 2  
+| Parameter | Value |
+|-----------|-------|
+| Age | 54 |
+| Sex | 1 |
+| Height | 165 |
+| Weight | 78 |
+| RestingBP | 150 |
+| DiastolicBP | 95 |
+| Cholesterol | 240 |
+| Glucose | 130 |
+| Smoking | 0 |
+| AlcoholIntake | 1 |
+| PhysicalActivity | 2 |
+
+Expected Output:
+
+- **High Risk**
+- Probability around **80–90%**
+- SHAP explanation
+- Health recommendations
 
 ---
 
-## Expected Output
 
-- **Risk Level:** High  
-- **Probability:** ~80–90%  
-- Friendly explanation sentences based on SHAP  
-- Health recommendation cards
