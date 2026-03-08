@@ -59,16 +59,9 @@ export default function App() {
               {/* Linear-style cards */}
               <LinearCards />
 
-              {/* REMOVE HighlightCards (you asked to remove the two boxes) */}
               {/* <HighlightCards /> */}
 
-              {/* RENAME Core Features → Why Anther Heart */}
-              
-
               <WhyUs />  {/* core feature cards restored */}
-
-              {/* Remove InfoGrid section */}
-              {/* <InfoGrid /> */}
 
               {/* FAQ */}
               <main className="max-w-6xl mx-auto px-6 py-20">
