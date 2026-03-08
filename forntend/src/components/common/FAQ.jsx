@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 const data = [
   {
-    q: "What is Anther Heart?",
+    q: "What is Ather Heart?",
     a: "An AI-assisted platform that predicts heart disease risk using your health data."
   },
   {

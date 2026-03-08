@@ -4,12 +4,12 @@ export default function Info() {
   return (
     <div className="pt-32 max-w-6xl mx-auto px-6">
 
-      <h1 className="text-4xl font-bold mb-6">How Anther Heart Works</h1>
+      <h1 className="text-4xl font-bold mb-6">How Ather Heart Works</h1>
 
       <div className="space-y-8 text-gray-700 text-lg leading-relaxed">
 
         <p>
-          Anther Heart is designed to make heart-risk evaluation simple, friendly,
+          Ather Heart is designed to make heart-risk evaluation simple, friendly,
           and accessible for everyone.
         </p>
 

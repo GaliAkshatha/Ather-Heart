@@ -5,7 +5,7 @@ export default function WhyUs() {
     <div className="w-full pt-10 pb-24 bg-white">
 
       <h2 className="text-4xl font-bold text-center mb-12">
-        Why Anther Heart?
+        Why Ather Heart?
       </h2>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-6">

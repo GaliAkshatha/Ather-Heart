@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/logo.png";  // ✅ Correct import
+import logo from "../../assets/logo.png";  
 
 export default function Navbar({ onLogin }) {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ export default function Navbar({ onLogin }) {
           onClick={() => navigate("/")}
         >
           <img src={logo} className="w-8 h-8" alt="logo" />
-          <span className="text-xl font-semibold">Anther Heart</span>
+          <span className="text-xl font-semibold">Ather Heart</span>
         </div>
 
         {/* NAV LINKS */}

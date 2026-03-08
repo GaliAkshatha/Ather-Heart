@@ -13,6 +13,13 @@ model = joblib.load(os.path.join(MODEL_DIR, "heart_model.pkl"))
 scaler = joblib.load(os.path.join(MODEL_DIR, "scaler.pkl"))
 feature_cols = joblib.load(os.path.join(MODEL_DIR, "feature_columns.pkl"))
 
+# Fix compatibility for older XGBoost models
+if not hasattr(model, "use_label_encoder"):
+    model.use_label_encoder = False
+
+if not hasattr(model, "gpu_id"):
+    model.gpu_id = -1
+    
 # Create a SHAP explainer (TreeExplainer is suitable for XGBoost)
 explainer = shap.TreeExplainer(model)
 

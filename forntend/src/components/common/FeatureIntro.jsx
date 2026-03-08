@@ -15,7 +15,7 @@ export default function FeatureIntro() {
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed mb-4">
-            Anther Heart brings high-accuracy machine learning to everyday users — 
+            Ather Heart brings high-accuracy machine learning to everyday users — 
             helping detect risks early with clarity, softness, and confidence.
           </p>
 

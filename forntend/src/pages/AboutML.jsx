@@ -7,7 +7,7 @@ export default function AboutML() {
       <h1 className="text-4xl font-bold mb-6">About Our ML Model</h1>
 
       <p className="text-gray-700 text-lg leading-relaxed mb-6">
-        Anther Heart uses a finely-tuned <span className="font-semibold">XGBoost Classification Model</span>
+        Ather Heart uses a finely-tuned <span className="font-semibold">XGBoost Classification Model</span>
         trained on multiple health indicators to predict heart-related risks
         with reliable accuracy.
       </p>
