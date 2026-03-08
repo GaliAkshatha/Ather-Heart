@@ -1,52 +1,71 @@
-Ather Heart
-Heart Disease Prediction System (Mini Project – 2025)
+# Ather Heart
+### Heart Disease Prediction System (Mini Project – 2025)
 
 Ather Heart is a machine-learning based web application that predicts the risk of heart disease using patient health parameters.
-The system includes OCR-based report extraction, manual form prediction, SHAP explainability, and dashboards for patients, doctors, and hospitals.
 
-This project uses a Flask backend for ML prediction and a React frontend for the user interface.
+The system includes **OCR-based report extraction, manual form prediction, SHAP explainability, and dashboards for patients, doctors, and hospitals.**
 
-##Project Features:
--Patient Side
--Upload medical report (OCR extracts values automatically)
--Missing values are shown in a fallback form to fill manually
+The project uses a **Flask backend** for ML prediction and a **React frontend** for the user interface.
 
-##ML model predicts:
--Risk level (Low / Medium / High)
--Probability percentage
--Friendly explanation sentences based on SHAP
--Recommendation cards based on the risk level
--Floating chatbot assistant (Chopper)
+---
 
-##Doctor Side:
--Raw SHAP values for all features
--Feature impact list for each prediction
+## Project Features
 
-##Hospital Side:
--Basic placeholder dashboard for future development
--Machine Learning
+### Patient Side
+- Upload medical report (OCR extracts values automatically)
+- Missing values are shown in a fallback form to fill manually
+- Manual health parameter entry
+- ML prediction results
 
-XGBoost model trained on combined dataset
-StandardScaler used for normalization
-SMOTE used for handling imbalance
-BMI auto-calculated
-Feature importance used for explanations
+### ML Model Output
+- Risk Level (**Low / Medium / High**)
+- Probability percentage
+- Friendly explanation sentences based on **SHAP**
+- Recommendation cards based on the risk level
+- Floating chatbot assistant (**Chopper**)
 
-##Tech Stack:
--Frontend
-    React (Vite)
-    Tailwind CSS
-    JavaScript
-    Axios
--Backend
-   Flask
-   Python
-   SHAP
-   Tesseract OCR
-   Joblib
-   CORS
-   
-##Project Structure:
+### Doctor Side
+- Raw **SHAP values** for all features
+- Feature impact list for each prediction
+- Explainable prediction insights
+
+### Hospital Side
+- Basic placeholder dashboard
+- Designed for future hospital analytics
+
+---
+
+## Machine Learning
+
+- **Model:** XGBoost
+- **Normalization:** StandardScaler
+- **Imbalance Handling:** SMOTE
+- **Feature Engineering:** BMI auto-calculated
+- **Explainability:** SHAP feature importance
+
+---
+
+## Tech Stack
+
+### Frontend
+- React (Vite)
+- Tailwind CSS
+- JavaScript
+- Axios
+
+### Backend
+- Flask
+- Python
+- SHAP
+- Tesseract OCR
+- Joblib
+- Flask-CORS
+
+---
+
+## Project Structure
+
+```
 ather-heart/
 │
 ├── backend/
@@ -68,51 +87,95 @@ ather-heart/
 │   └── index.html
 │
 └── README.md
+```
 
-How to Run the Project
+---
 
-You need two terminals:
-one for the backend and one for the frontend.
+## How to Run the Project
 
-1. Backend Setup (Flask)
- Go to backend folder:
-  cd backend
+You need **two terminals**: one for the backend and one for the frontend.
+
+### 1. Backend Setup (Flask)
+
+Go to backend folder:
+
+```
+cd backend
+```
+
 Create virtual environment:
-  python -m venv venv
+
+```
+python -m venv venv
+```
+
 Activate:
- Windows:
-   venv\Scripts\activate
+
+Windows
+
+```
+venv\Scripts\activate
+```
+
 Install required packages:
-  pip install -r requirements.txt
+
+```
+pip install -r requirements.txt
+```
+
 Start backend:
-  python app.py
-Backend will run at:
-  http://127.0.0.1:5000
 
-2. Frontend Setup (React)
+```
+python app.py
+```
+
+Backend runs at:
+
+```
+http://127.0.0.1:5000
+```
+
+---
+
+### 2. Frontend Setup (React)
+
 Open a new terminal:
-  cd frontend
-  npm install
-  npm run dev
-Frontend will run at:
-  http://localhost:5173
 
-Sample Input for Testing Prediction
+```
+cd frontend
+npm install
+npm run dev
+```
 
-You can use the following values in the manual form:
+Frontend runs at:
 
-Age: 54
-Sex: 1
-Height: 165
-Weight: 78
-RestingBP: 150
-DiastolicBP: 95
-Cholesterol: 240
-Glucose: 130
-Smoking: 0
-AlcoholIntake: 1
-PhysicalActivity: 2
+```
+http://localhost:5173
+```
 
+---
 
-Expected output:
-High risk, probability around 80–90%, friendly explanation sentences, recommendations.
+## Sample Input for Testing
+
+Use these values in the manual form:
+
+Age: 54  
+Sex: 1  
+Height: 165  
+Weight: 78  
+RestingBP: 150  
+DiastolicBP: 95  
+Cholesterol: 240  
+Glucose: 130  
+Smoking: 0  
+AlcoholIntake: 1  
+PhysicalActivity: 2  
+
+---
+
+## Expected Output
+
+- **Risk Level:** High  
+- **Probability:** ~80–90%  
+- Friendly explanation sentences based on SHAP  
+- Health recommendation cards
