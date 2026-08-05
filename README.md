@@ -17,39 +17,9 @@ The application combines OCR-based medical report extraction, manual health para
 
 ---
 
-# 🌐 Live Demo
+#  Live Demo
 
 https://ather-heart.vercel.app/
-
----
-
-#  Screenshots
-
-> Add screenshots here after deployment.
-
-Example:
-
-```
-screenshots/
-│
-├── home.png
-├── patient-dashboard.png
-├── doctor-dashboard.png
-├── prediction.png
-└── ocr-upload.png
-```
-
-Then display them like:
-
-```md
-## Home
-
-![Home](screenshots/home.png)
-
-## Prediction
-
-![Prediction](screenshots/prediction.png)
-```
 
 ---
 
