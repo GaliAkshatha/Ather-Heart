@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react"
+import chopper from "../../assets/chopper.png"
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false)
@@ -55,7 +56,7 @@ export default function Chatbot() {
         className="fixed bottom-6 right-6 bg-pink-500 hover:bg-pink-600 w-16 h-16 rounded-full shadow-xl cursor-pointer flex items-center justify-center"
       >
         <img 
-          src="/src/assets/chopper.png" 
+          src={chopper} 
           alt="Chopper" 
           className="w-12 h-12"
         />

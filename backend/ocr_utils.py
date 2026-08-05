@@ -7,7 +7,11 @@ import re
 
 
 def extract_text_from_image(path):
-    img = Image.open(path)
+    try:
+        img = Image.open(path)
+        img.load()  # force a full decode now so corrupt files fail here, not later
+    except Exception as e:
+        raise ValueError(f"Could not read the uploaded file as an image: {e}")
 
     # Preprocess
     img = img.convert("L")                       # grayscale

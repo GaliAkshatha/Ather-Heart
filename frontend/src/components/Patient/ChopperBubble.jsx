@@ -1,4 +1,5 @@
 import React from "react"
+import chopper from "../../assets/chopper.png"
 
 export default function ChopperBubble({ risk }) {
   const messages = {
@@ -10,7 +11,7 @@ export default function ChopperBubble({ risk }) {
   return (
     <div className="flex items-center gap-3 mt-10">
       <img 
-        src="/src/assets/chopper.png"
+        src={chopper}
         className="w-20 h-20 rounded-full shadow border"
       />
 

@@ -4,10 +4,23 @@ import shap
 import numpy as np
 import os
 
+from preprocess_utils import MissingFieldError
+
 # ----------------------------
 # Load model, scaler, features
 # ----------------------------
 MODEL_DIR = os.path.join(os.path.dirname(__file__), "model")
+
+# Fail loudly and early (at import/startup) rather than on the first
+# request, and with a clear message if the artifacts are missing —
+# e.g. not committed, or wrong working directory on the deploy host.
+for _fname in ("heart_model.pkl", "scaler.pkl", "feature_columns.pkl"):
+    _fpath = os.path.join(MODEL_DIR, _fname)
+    if not os.path.exists(_fpath):
+        raise FileNotFoundError(
+            f"Required model artifact missing: {_fpath}. "
+            "Ensure backend/model/ is included in the deployment."
+        )
 
 model = joblib.load(os.path.join(MODEL_DIR, "heart_model.pkl"))
 scaler = joblib.load(os.path.join(MODEL_DIR, "scaler.pkl"))
@@ -117,6 +130,27 @@ def friendly_sentence(feature, value, impact):
 
 
 # ------------------------------------------------------
+# INPUT VALIDATION
+# ------------------------------------------------------
+def _validate_features(df):
+    """Raise a clear, catchable error for missing/non-numeric fields
+    instead of letting pandas/sklearn throw an opaque KeyError/ValueError
+    that would surface as an unhandled 500."""
+    missing = [c for c in feature_cols if c not in df.columns or pd.isna(df.loc[0, c])]
+    if missing:
+        raise MissingFieldError(f"Missing required field(s): {', '.join(missing)}")
+
+    non_numeric = []
+    for c in feature_cols:
+        try:
+            float(df.loc[0, c])
+        except (TypeError, ValueError):
+            non_numeric.append(c)
+    if non_numeric:
+        raise MissingFieldError(f"Field(s) must be numeric: {', '.join(non_numeric)}")
+
+
+# ------------------------------------------------------
 # PREDICTION FOR PATIENT (FRIENDLY)
 # ------------------------------------------------------
 def predict_patient(input_data):
@@ -135,6 +169,8 @@ def predict_patient(input_data):
         except Exception:
             # if calculation fails, put NaN (scaler/model may error if features mismatch)
             df["BMI"] = np.nan
+
+    _validate_features(df)
 
     # Reorder / select features used by model
     # feature_cols should be a list of strings matching model training columns
@@ -209,6 +245,8 @@ def predict_doctor(input_data):
             df["BMI"] = df["Weight"] / ((df["Height"] / 100) ** 2)
         except Exception:
             df["BMI"] = np.nan
+
+    _validate_features(df)
 
     df = df[feature_cols]
     X_scaled = scaler.transform(df)

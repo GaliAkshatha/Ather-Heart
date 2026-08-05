@@ -2,23 +2,27 @@ import React, { useState, useEffect } from "react"
 import ShapTable from "./ShapTable"
 import PatientList from "./PatientList"
 import TrendGraph from "./TrendGraph"
+import API from "../../api"
 
 export default function DoctorDashboard() {
 
   const [selectedPatient, setSelectedPatient] = useState(null)
   const [shapData, setShapData] = useState(null)
+  const [error, setError] = useState(null)
 
   const handleView = async (patient) => {
     setSelectedPatient(patient)
+    setError(null)
 
-    const res = await fetch("http://127.0.0.1:5000/api/predict/doctor", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(patient)
-    })
-
-    const data = await res.json()
-    setShapData(data)
+    try {
+      const res = await API.post("/predict/doctor", patient)
+      setShapData(res.data)
+    } catch (err) {
+      setShapData(null)
+      setError(
+        err.response?.data?.error || "Could not load SHAP data for this patient."
+      )
+    }
   }
 
   return (
@@ -28,6 +32,8 @@ export default function DoctorDashboard() {
 
       {/* Patient Table */}
       <PatientList onView={handleView} />
+
+      {error && <p className="mt-4 text-red-600">{error}</p>}
 
       {/* SHAP Analysis */}
       {shapData && (

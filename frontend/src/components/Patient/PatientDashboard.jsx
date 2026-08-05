@@ -3,17 +3,21 @@ import UploadCard from "./UploadCard"
 import FormFallback from "./FormFallback"
 import InputForm from "./InputForm"
 import ResultCard from "./ResultCard"
+import API from "../../api"
+import chopper from "../../assets/chopper.png"
 
 export default function PatientDashboard() {
   const [mode, setMode] = useState(null) // upload OR form
   const [extracted, setExtracted] = useState(null)
   const [missingFields, setMissingFields] = useState([])
   const [prediction, setPrediction] = useState(null)
+  const [error, setError] = useState(null)
 
   const resetAll = () => {
     setExtracted(null)
     setMissingFields([])
     setPrediction(null)
+    setError(null)
   }
 
   const handleExtract = (ex, missing) => {
@@ -22,14 +26,15 @@ export default function PatientDashboard() {
   }
 
   const handleFinalSubmit = async (data) => {
-    const res = await fetch("http://127.0.0.1:5000/api/predict/patient", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    })
-
-    const output = await res.json()
-    setPrediction(output)
+    setError(null)
+    try {
+      const res = await API.post("/predict/patient", data)
+      setPrediction(res.data)
+    } catch (err) {
+      setError(
+        err.response?.data?.error || "Could not get a prediction. Please check your entries and try again."
+      )
+    }
   }
 
   return (
@@ -61,7 +66,7 @@ export default function PatientDashboard() {
       {mode && (
         <div className="mt-6 flex items-center gap-4">
           <img 
-            src="/src/assets/chopper.png" 
+            src={chopper} 
             alt="Chopper" 
             className="w-24 h-24 rounded-full border shadow"
           />
@@ -70,6 +75,10 @@ export default function PatientDashboard() {
             {mode === "upload" ? "Upload your report to get started!" : "Fill the form to continue!"}
           </p>
         </div>
+      )}
+
+      {error && (
+        <p className="mt-4 text-red-600">{error}</p>
       )}
 
       {/* ========== UPLOAD MODE ========== */}
