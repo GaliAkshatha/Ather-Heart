@@ -1,76 +1,142 @@
-#  Ather Heart – Heart Disease Prediction System
+# ❤️ Ather Heart – AI-Powered Heart Disease Prediction System
 
-Ather Heart is a **machine learning powered web application** that predicts the risk of heart disease using patient health parameters.
+<p align="center">
 
-The system includes **OCR-based report extraction, manual form prediction, explainable AI insights (SHAP), and role-based dashboards** for patients, doctors, and hospitals.
+![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![Flask](https://img.shields.io/badge/Flask-Python-black?logo=flask)
+![XGBoost](https://img.shields.io/badge/XGBoost-ML-success)
+![SHAP](https://img.shields.io/badge/Explainable%20AI-SHAP-orange)
+![OCR](https://img.shields.io/badge/OCR-Tesseract-blueviolet)
+![License](https://img.shields.io/badge/Status-Active-success)
 
-The goal of this project is to make **early heart disease risk screening accessible, explainable, and interactive** using AI and modern web technologies.
+</p>
+
+An AI-powered healthcare web application that predicts the risk of heart disease using Machine Learning while providing transparent, explainable predictions through SHAP.
+
+The application combines OCR-based medical report extraction, manual health parameter prediction, and role-based dashboards to provide an interactive and explainable heart disease screening experience.
+
+---
+
+# 🌐 Live Demo
+
+https://ather-heart.vercel.app/
+
+---
+
+#  Screenshots
+
+> Add screenshots here after deployment.
+
+Example:
+
+```
+screenshots/
+│
+├── home.png
+├── patient-dashboard.png
+├── doctor-dashboard.png
+├── prediction.png
+└── ocr-upload.png
+```
+
+Then display them like:
+
+```md
+## Home
+
+![Home](screenshots/home.png)
+
+## Prediction
+
+![Prediction](screenshots/prediction.png)
+```
 
 ---
 
 #  Features
 
-##  Patient Interface
-- Upload medical reports (OCR extracts values automatically)
-- Manual health parameter input form
-- Heart disease **risk classification (Low / Medium / High)**
-- **Probability score** of prediction
-- SHAP-based friendly explanations
-- Health recommendation cards based on risk
-- Floating chatbot assistant (**Chopper**)
+##  Patient Portal
+
+- OCR-based medical report upload
+- Automatic extraction of medical values
+- Manual health parameter input
+- Heart disease prediction
+- Risk classification
+  - Low
+  - Medium
+  - High
+- Prediction probability
+- Explainable AI using SHAP
+- Personalized health recommendations
+- Floating AI chatbot assistant (Chopper)
 
 ---
 
-##  Doctor Interface
-- View prediction details
-- Raw **SHAP feature contributions**
-- Feature importance for each patient prediction
+##  Doctor Portal
+
+- View patient prediction details
+- SHAP feature contribution visualization
+- Feature importance explanation
+- Clinical prediction summary
 
 ---
 
-##  Hospital Interface
-- Basic administrative dashboard
-- Placeholder for future hospital integration
+##  Hospital Portal
+
+- Administrative dashboard
+- Foundation for future hospital integration
 
 ---
 
 #  Machine Learning Pipeline
 
-### Data Processing
-- Combined dataset created by merging multiple heart disease datasets
+## Data Processing
+
+- Combined multiple heart disease datasets
+- Data cleaning
 - Missing value removal
 - BMI feature generation
 - StandardScaler normalization
-- SMOTE for class imbalance handling
+- SMOTE class balancing
 
-### Model
-- **XGBoost Classifier**
-- Optimized hyperparameters
+## Model
 
-### Explainability
-- **SHAP (SHapley Additive exPlanations)** used to explain predictions.
+- XGBoost Classifier
+- Hyperparameter tuning
+- Probability-based prediction
+
+## Explainable AI
+
+Predictions are explained using:
+
+- SHAP (SHapley Additive Explanations)
+
+allowing users and doctors to understand why a prediction was made instead of receiving a black-box result.
 
 ---
 
 #  Tech Stack
 
 ## Frontend
+
 - React (Vite)
 - Tailwind CSS
 - JavaScript
 - Axios
 
 ## Backend
+
 - Flask
 - Python
-- SHAP
+- Flask-CORS
 - Tesseract OCR
 - Joblib
-- Flask-CORS
 
 ## Machine Learning
+
 - XGBoost
 - Scikit-learn
+- SHAP
 - Pandas
 - NumPy
 - Imbalanced-learn (SMOTE)
@@ -85,24 +151,18 @@ Ather-Heart
 ├── backend
 │   ├── app.py
 │   ├── predict.py
-│   ├── ocr_utils.py
 │   ├── preprocess_utils.py
+│   ├── ocr_utils.py
 │   ├── requirements.txt
-│
+│   ├── Dockerfile
 │   └── model
 │       ├── heart_model.pkl
 │       ├── scaler.pkl
 │       ├── feature_columns.pkl
 │
-│       └── training
-│           ├── combined.csv
-│           └── train_model.py
-│
 ├── frontend
 │   ├── src
-│   │   ├── components
-│   │   ├── pages
-│   │   └── assets
+│   ├── public
 │   └── package.json
 │
 └── README.md
@@ -110,35 +170,47 @@ Ather-Heart
 
 ---
 
-#  Installation & Setup
+#  Installation
 
-## 1️ Clone the Repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/GaliAkshatha/Ather-Heart.git
+
 cd Ather-Heart
 ```
 
 ---
 
-## 2️ Backend Setup
+## Backend
 
 ```bash
 cd backend
 
 python -m venv venv
+```
 
-# Activate environment
+Activate
 
-# Windows
+### Windows
+
+```bash
 venv\Scripts\activate
+```
 
+Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
+Run
+
+```bash
 python app.py
 ```
 
-Backend runs at:
+Backend
 
 ```
 http://127.0.0.1:5000
@@ -146,9 +218,7 @@ http://127.0.0.1:5000
 
 ---
 
-## 3️ Frontend Setup
-
-Open a new terminal:
+## Frontend
 
 ```bash
 cd frontend
@@ -158,7 +228,7 @@ npm install
 npm run dev
 ```
 
-Frontend runs at:
+Frontend
 
 ```
 http://localhost:5173
@@ -166,12 +236,10 @@ http://localhost:5173
 
 ---
 
-#  Sample Input for Testing
-
-Use the following values in the manual prediction form:
+#  Sample Test Input
 
 | Parameter | Value |
-|-----------|-------|
+|-----------|------:|
 | Age | 54 |
 | Sex | 1 |
 | Height | 165 |
@@ -181,16 +249,39 @@ Use the following values in the manual prediction form:
 | Cholesterol | 240 |
 | Glucose | 130 |
 | Smoking | 0 |
-| AlcoholIntake | 1 |
-| PhysicalActivity | 2 |
+| Alcohol Intake | 1 |
+| Physical Activity | 2 |
 
-Expected Output:
+Expected Result
 
-- **High Risk**
-- Probability around **80–90%**
+- High Risk
+- Probability around 80–90%
 - SHAP explanation
 - Health recommendations
 
 ---
+
+#  Deployment
+
+Frontend
+
+- Vercel
+
+Backend
+
+- Render (Docker)
+
+---
+
+#  Future Improvements
+
+- Secure authentication
+- Doctor-patient history
+- Hospital database integration
+- PDF report generation
+- Email notifications
+- Multi-language support
+- Appointment scheduling
+- Cloud database support
 
 
