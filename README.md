@@ -231,18 +231,6 @@ Expected Result
 
 ---
 
-#  Deployment
-
-Frontend
-
-- Vercel
-
-Backend
-
-- Render (Docker)
-
----
-
 #  Future Improvements
 
 - Secure authentication
