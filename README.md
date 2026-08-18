@@ -19,7 +19,7 @@ The application combines OCR-based medical report extraction, manual health para
 
 #  Live Demo
 
-[https://ather-heart.vercel.app/](https://ather.akshathag.in)
+[https://ather.akshathag.in](https://ather.akshathag.in)
 
 ---
 
